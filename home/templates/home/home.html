@@ -1,0 +1,294 @@
+{% extends "home/base.html" %}
+{% block content %}
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'CSS/home.css' %}">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+
+
+
+ <!-- Favicon -->
+  <!--link href="{% static 'Images/favicon.ico' %}" rel="icon"-->
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Raleway:400,500,700|Roboto:400,900" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'CSS/swiper.min.css' %}">
+
+
+
+
+
+<div>
+ <section class="hero">
+    <div class="container text-center">
+      
+
+      <div class="col-md-12">
+        <h1>
+           Codesmaster
+        </h1>
+
+        <p class="tagline">
+         A platform to share codes of our community and discovering new ideas.
+        </p>
+        <a class="btn btn-full" href="{%url 'Codesmaster_SignUp'%}">Get Started Now</a>
+      </div>
+    </div>
+  </section>
+</div>
+
+   <section class="about" id="about">
+    <div class="container text-center">
+      <h2>
+          About Us
+        </h2>
+
+      <p>
+       This community is build to provide budding developers like ourselves a forum to contribute and discover new ideas. Through varied projects on revolutionary Open Technologies throughout the year, we spread the idea of latest technologies to beginners and veterans alike. We bring people together to ideate and contribute to the leading Open technologies. We provide help and resources to everyone who wants to make the web world a better place.
+      </p>
+
+      <div class="row stats-row">
+        <div class="stats-col text-center col-md-3 col-sm-6">
+          <div class="circle">
+            <span class="stats-no" data-toggle="counter-up">1</span> Members
+          </div>
+        </div>
+
+        <div class="stats-col text-center col-md-3 col-sm-6">
+          <div class="circle">
+            <span class="stats-no" data-toggle="counter-up">1</span> Released Projects
+          </div>
+        </div>
+
+        <div class="stats-col text-center col-md-3 col-sm-6">
+          <div class="circle">
+            <span class="stats-no" data-toggle="counter-up">1,463</span> Hours Of Support
+          </div>
+        </div>
+
+        <div class="stats-col text-center col-md-3 col-sm-6">
+          <div class="circle">
+            <span class="stats-no" data-toggle="counter-up">0</span> Events
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="container text-center" id="latest">
+       <h2>
+         Latest News
+        </h2>     </div>
+<div class="swiper-container">
+    <div class="swiper-wrapper">
+    	{% for new in news %}
+      <div class="swiper-slide"><section class="sec3" id="News">
+	<div class ="container">
+		<div class="row">
+			<div class="offset-sm-2 col-sm-8">
+				  <div class="card card-block text-center">
+            <div>
+              <h3 style="color: #199EB8;">
+                  {{new.title}}
+                </h3>
+              <p style="font-family: Roboto, Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  color: #999;">
+               {{new.content}}
+              </p>
+            </div>
+          </div>
+			</div>
+		</div>
+     </section></div>
+      {% endfor %}
+    </div>
+    <!-- Add Pagination -->
+    <div class="swiper-pagination"></div>
+  </div>
+
+ <!-- Swiper JS -->
+  <script src="{%static 'Jscripts/swiper.min.js' %}"></script>
+
+  <!-- Initialize Swiper -->
+   <script>
+    var swiper = new Swiper('.swiper-container', {
+      slidesPerView: 3,
+      spaceBetween: 30,
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+    });</script>
+
+
+    <br/><br/>
+<!-- Call to Action -->
+<div id="Contact"></div>
+  <section class="cta" >
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-9 col-sm-12 text-lg-left text-center">
+          <h2>
+              Want to be a part of our Community?
+            </h2>
+
+          <p>
+            Codesmaster <br/>
+            Mail us at : codesmaster404@gmail.com
+          </p>
+        </div>
+
+        <div class="col-lg-3 col-sm-12 text-lg-right text-center">
+          <a class="btn btn-ghost" href="https://mail.google.com/">Open Gmail</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- /Call to Action -->
+  <!-- Portfolio -->
+
+
+<section class="features" id="features">
+    <div class="container">
+      <h2 class="text-center">
+          Features
+        </h2>
+
+      <div class="row">
+        <div class="feature-col col-lg-4 col-xs-12">
+          <div class="card card-block text-center">
+            <div>
+              <div class="feature-icon">
+                <span class="fa fa-rocket"></span>
+              </div>
+            </div>
+
+            <div>
+              <h3>
+                  Custom Design
+                </h3>
+
+              <p>
+                Eque feugiat contentiones ei has. Id summo mundi explicari his, nec in maiorum scriptorem.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="feature-col col-lg-4 col-xs-12">
+          <div class="card card-block text-center">
+            <div>
+              <div class="feature-icon">
+                <span class="fa fa-envelope"></span>
+              </div>
+            </div>
+
+            <div>
+              <h3>
+                  Responsive Layout
+                </h3>
+
+              <p>
+                Eque feugiat contentiones ei has. Id summo mundi explicari his, nec in maiorum scriptorem.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="feature-col col-lg-4 col-xs-12">
+          <div class="card card-block text-center">
+            <div>
+              <div class="feature-icon">
+                <span class="fa fa-bell"></span>
+              </div>
+            </div>
+
+            <div>
+              <h3>
+                  Innovative Ideas
+                </h3>
+
+              <p>
+                Eque feugiat contentiones ei has. Id summo mundi explicari his, nec in maiorum scriptorem.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="feature-col col-lg-4 col-xs-12">
+          <div class="card card-block text-center">
+            <div>
+              <div class="feature-icon">
+                <span class="fa fa-database"></span>
+              </div>
+            </div>
+
+            <div>
+              <h3>
+                  Good Documentation
+                </h3>
+
+              <p>
+                Eque feugiat contentiones ei has. Id summo mundi explicari his, nec in maiorum scriptorem.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="feature-col col-lg-4 col-xs-12">
+          <div class="card card-block text-center">
+            <div>
+              <div class="feature-icon">
+              	<i class="fa fa-code-fork" aria-hidden="true"></i>
+              </div>
+            </div>
+
+            <div>
+              <h3>Github links</h3>
+
+              <p>
+                Eque feugiat contentiones ei has. Id summo mundi explicari his, nec in maiorum scriptorem.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="feature-col col-lg-4 col-xs-12">
+          <div class="card card-block text-center">
+            <div>
+              <div class="feature-icon">
+                <i class="fa fa-bolt" aria-hidden="true"></i>
+
+              </div>
+            </div>
+
+            <div>
+              <h3>
+                  Creative Ideas
+                </h3>
+
+              <p>
+                Eque feugiat contentiones ei has. Id summo mundi explicari his, nec in maiorum scriptorem.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- /Features -->
+  <!-- Call to Action -->
+
+
+
+
+
+
+
+
+  <!-- Template Specisifc Custom Javascript File -->
+  <script src="{%static 'Jscripts/home.js' %}"></script>
+
+
+{% endblock content%}

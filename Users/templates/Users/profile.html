@@ -1,0 +1,85 @@
+{% extends "home/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+{%load static%}
+
+<link rel="stylesheet" type="text/css" href="{% static 'CSS/profileup.css' %}">
+<br/>
+<br/>
+<br/><br/>
+
+<div class="row py-6 px-4">
+    <div class="col-md-8 mx-auto" >
+        <!-- Profile widget -->
+        <div class="bg-white shadow rounded overflow-hidden">
+            <div class="px-4 pt-0 pb-4 cover">
+                <div class="media align-items-end profile-head">
+                    <div class="profile mr-3"><img src={{user.profile.image.url}} alt="..." height="200px" width="190px" class="rounded-circle account-img"></div>
+                    <div class="media-body mb-5 text-white">
+                        <h4 class="mt-0 mb-0">{{user.username}}</h4>
+                        <p class="small mb-4"> <i class="fas fa-map-marker-alt mr-2"></i>{{user.first_name}} {{user.last_name}} </p>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-light p-4 d-flex justify-content-end text-center">
+                <!--ul class="list-inline mb-0">
+                    <li class="list-inline-item">
+                        <h5 class="font-weight-bold mb-0 d-block">215</h5><small class="text-muted"> <i class="fas fa-image mr-1"></i>Photos</small>
+                    </li>
+                    <li class="list-inline-item">
+                        <h5 class="font-weight-bold mb-0 d-block">745</h5><small class="text-muted"> <i class="fas fa-user mr-1"></i>Followers</small>
+                    </li>
+                    <li class="list-inline-item">
+                        <h5 class="font-weight-bold mb-0 d-block">340</h5><small class="text-muted"> <i class="fas fa-user mr-1"></i>Following</small>
+                    </li>
+                </ul-->
+            </div>
+            <div class="px-4 py-3">
+                <h5 class="mb-0">About</h5>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-4">Profile Info</legend>
+            {{u_form|crispy }}
+            {{i_form|crispy }}
+        </fieldset>
+
+        <div class="form-group">
+            <button class="btn btn-outline-info" type="submit">Update</button>
+        </div>
+    </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<br/><br/>
+
+
+<br/>
+<div class="col-md-8 mx-auto">
+
+    {%if user.is_staff%}
+    <h1>Manage Posts</h1>
+    <div  style="float:right;">
+<a class="btn btn-primary" href="{%url 'Codesmaster_Projects_Create'%}" role="button">Publish a new project</a>
+ </div><br/><br/>
+
+
+<br/>
+    <div class="list-group">
+        <ul>
+        {% for post in posts %}
+        {%if user == post.author%}
+            <li><div><a data-width="50%" class="list-group-item list-group-item-action" href="/Projects/{{post.id}}/update/"> <strong>UPDATE </strong> {{post.title}}</a><a href="/Projects/{{post.id}}/delete/">DELETE</a></div><br/>
+     </li>
+            {%endif%}
+     {% endfor %}
+        </ul>
+    </div>
+    {%endif%}
+</div>
+
+<br/>
+<br/>
+{% endblock content%}

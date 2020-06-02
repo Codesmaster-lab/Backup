@@ -1,0 +1,58 @@
+{% extends "home/base.html" %}
+{% block content %}
+{% load static %}
+
+
+<link rel="stylesheet" type="text/css" href="{% static 'CSS/project.css' %}">
+<br/><br/>
+<br/><br/>
+  <center>
+<div class="block">
+  <img src="{% static 'Images/blog.jpg' %}" data-speed="-1.5" class="img-parallax">
+    <h2>PROJECTS</h2>
+</div>
+</center>
+<section class="info">
+
+</section>
+<section class="cards-wrapper">
+  {% for post in posts %}
+  <div class="card-grid-space">
+    <div class="num">{{post.id}}</div>
+    <a class="card" href="/Projects/{{post.id}}" style="--bg-img: url({{post.author.profile.image.url}})">
+      <div>
+        <h1>{{post.title}}</h1><br/>
+          <h2>----- {{post.author}}</h2>
+        <p>{{post.caption}}</p>
+        <div class="date">{{post.date_posted|date:"F d,Y"}}<br/></div>
+        <div class="tags">
+          <div class="tag">Read More</div>
+        </div>
+      </div>
+    </a>
+  </div>
+  {% endfor %}
+  <!-- https://images.unsplash.com/photo-1520839090488-4a6c211e2f94?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=38951b8650067840307cba514b554ba5&auto=format&fit=crop&w=1350&q=80 -->
+</section>
+<div align='center'>
+{%if is_paginated%}
+
+    {%if page_obj.has_previous%}
+     <a class="btn btn-outline-info mb-4"href="?page=1">First</a>
+     <a class="btn btn-outline-info mb-4"href="?page={{page_obj.previous_page_number}}"><</a>
+    {%endif%}
+{% for num in page_obj.paginator.page_range %}
+   {%if page_obj.number == num %}
+   <a class="btn btn-info mb-4"href="?page={{num}}">{{num}}</a>
+   {%elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3'%}
+    <a class="btn btn-outline-info mb-4"href="?page={{num}}">{{num}}</a>
+   {%endif%}
+{%endfor%}
+     {%if page_obj.has_next%}
+     <a class="btn btn-outline-info mb-4"href="?page={{page_obj.next_page_number}}">></a>
+     <a class="btn btn-outline-info mb-4"href="?page={{page_obj.paginator.num_pages}}">Last</a>
+    {%endif%}
+{%endif%}
+</div>
+<script src="{%static 'Jscripts/project.js' %}"></script>
+{% endblock content%}

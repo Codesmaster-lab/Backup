@@ -1,0 +1,46 @@
+{% extends "home/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+{%load static%}
+<link rel="stylesheet" type="text/css" href="{% static 'CSS/Signup.css' %}">
+
+  <br/><br/>
+<div class="container">
+    <div class="row">
+      <div class="col-sm-9 col-md-7 col-lg-7 mx-auto">
+        <div class="card card-signin my-5">
+          <div class="card-body">
+                               {%if user.is_authenticated %}
+                   <div  style="
+               background-color: #ddffdd;
+               border-left: 6px solid #4CAF50;
+">
+                   <p><strong>YOU!</strong>   ARE   ALREADY  LOGGED  IN  :) </p>
+                    </div>
+                    <div class="border-top pt-3"></div><br/>
+                    <br/>
+              <div class="logout"></div>
+                 {%else%}
+            <h5 class="card-title text-center">Join Today</h5>
+            <form class="form-signin" method="POST">
+
+              {% csrf_token %}
+
+             {{form|crispy }}
+              <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Sign Up</button>
+              <hr class="my-4">
+             
+                <div class="border-top pt-3">
+            <small class="text-muted">Already have an Account ? <a class="ml-2" href="{%url 'Codesmaster_SignIn'%}">SignIn</a> </small>
+        </div>
+                {%endif%}
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+{% endblock content%}

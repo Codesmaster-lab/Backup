@@ -1,0 +1,69 @@
+{% extends "home/base.html" %}
+{% block content %}
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'CSS/home.css' %}">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+
+
+
+ <!-- Favicon -->
+  <!--link href="{% static 'Images/favicon.ico' %}" rel="icon"-->
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Raleway:400,500,700|Roboto:400,900" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'CSS/swiper.min.css' %}">
+<br/><br/><br/>
+  <div class="container text-center" id="">
+       <h2>
+        Our Team
+        </h2>     </div>
+<div class="swiper-container">
+    <div class="swiper-wrapper">
+    	{% for user in users %}
+      <div class="swiper-slide"><section class="sec3" id="News">
+	<div class ="container">
+		<div class="row">
+			<div class="offset-sm-2 col-sm-8">
+				  <div class="card card-block text-center">
+            <div>
+              <h3 style="color: #199EB8;">
+                  {{user.username}}
+                </h3>
+              <p style="font-family: Roboto, Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  color: #999;">
+               {{new.first_name}}
+              </p>
+            </div>
+          </div>
+			</div>
+		</div>
+     </section></div>
+      {% endfor %}
+    </div>
+    <!-- Add Pagination -->
+    <div class="swiper-pagination"></div>
+  </div>
+
+ <!-- Swiper JS -->
+  <script src="{%static 'Jscripts/swiper.min.js' %}"></script>
+
+  <!-- Initialize Swiper -->
+   <script>
+    var swiper = new Swiper('.swiper-container', {
+      slidesPerView: 3,
+      spaceBetween: 30,
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+    });</script>
+
+
+    <br/><br/>
+
+  <!-- Template Specisifc Custom Javascript File -->
+  <script src="{%static 'Jscripts/home.js' %}"></script>
+
+
+{% endblock content%}

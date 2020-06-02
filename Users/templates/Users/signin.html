@@ -1,0 +1,56 @@
+{% extends "home/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+{%load static%}
+<link rel="stylesheet" type="text/css" href="{% static 'CSS/Signin.css' %}">
+
+<br/><br/>
+<div class="container">
+
+      <div class="row">
+      <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+        <div class="card card-signin my-5">
+          <div class="card-body">
+                                {%if user.is_authenticated %}
+                   <div  style="
+    background-color: #ddffdd;
+  border-left: 6px solid #4CAF50;
+">
+                   <p><strong>YOU!</strong> ARE ALREADY LOGGED IN  :) </p>
+                    </div>
+                    <div class="border-top pt-3"></div><br/>
+                    <br/>
+                <div class="logout"></div>
+                 {%else%}
+            <h5 class="card-title text-center">Sign In</h5>
+            <form class="form-signin"method="POST">
+
+                  {% csrf_token %}
+                      
+                  {{form|crispy }}
+                  <div class="custom-control custom-checkbox mb-3">
+                <input type="checkbox" class="custom-control-input" id="customCheck1">
+                <label class="custom-control-label" for="customCheck1">Remember password</label>
+              </div>
+              <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Sign in</button>
+              <hr class="my-4">
+              <center>OR</center><br/>
+              <button class="btn btn-lg btn-google btn-block text-uppercase" type="submit"><img src={%static 'Images/google-brands.svg ' %} style="width: 27px;height:25px;" />    Sign in with Google</button>
+                  {%endif%}
+              
+              <br/>
+              <div class="border-top pt-3">
+            <small class="text-muted">Don't have an Account ? make one here <a class="ml-2" href="{%url 'Codesmaster_SignUp'%}">Signup</a> </small>
+        </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+
+{% endblock content%}

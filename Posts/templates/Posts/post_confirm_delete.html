@@ -1,0 +1,29 @@
+{% extends "home/base.html" %}
+{% block content %}
+{%load static%}
+   <link rel="stylesheet" type="text/css" href="{% static 'CSS/postcreate.css' %}">
+<br/><br/><br/>
+<div class="container-fluid px-1 py-5 mx-auto">
+    <div class="row d-flex justify-content-center">
+        <div class="col-xl-9 col-lg-7 col-md-9">
+            <div class="card b-0" >
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-5">Delete Posts</legend>
+       <h1>Hey! are you sure to delete your Post</h1>
+            </fieldset>
+        <div class="form-group">
+                     <legend class="border-bottom mb-4">Delete Posts</legend>
+       <h1>Hey! are you sure to delete your Post</h1>
+            <button class="btn btn-outline-danger" type="submit">Delete</button>
+          <br/>  <a class="btn btn-outline-secondary" href="Projects/">Cancel</a>
+        </div>
+    </form>
+            </div>
+            </div>
+        </div>
+    </div>
+<br/><br/>
+<div style="height:20vh;"></div>
+{% endblock content%}

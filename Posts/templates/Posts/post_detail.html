@@ -1,0 +1,49 @@
+{% extends "home/base.html" %}
+{% block content %}
+{%load static%}
+    <link rel="stylesheet" type="text/css" href="{% static 'CSS/postdetail.css' %}">
+<br/><br/>
+<br/><br/>
+<div style="font-family: 'Baloo Paaji 2', cursive;">
+<center>
+<div class="block">
+  <img src="{{post.image.url}}" data-speed="-1" class="img-parallax">
+  <h2>{{object.title}}</h2>
+</div>
+</center>
+<br/><br/>
+
+<section>
+        <div class="circle circle2">
+                <img class="rounded-circle account-img" src={{object.author.profile.image.url}} height="300px" width="300px"/>
+
+        </div>
+        <div>
+                <center><h1><u>{{object.title}}</u></h1></center>
+              <div class="left"> <h2>By::<a href="/user/{{post.author.id}}">{{object.author}}</a></h2><h2><p >----{{object.date_posted}}</p></h2></div><br/><br/><br/><br/><br/>
+                <p><h5>{{object.content|linebreaks}}</h5></p>
+                  <h4><strong>    {%if object.link %}
+         For more details ::</strong><a href="{{object.link}}" >{{object.link}}</a>
+         {% endif %}</h4>
+        </div>
+<br/><br/>
+       <center> <img  src="{{post.image.url}}" class="rounded" height="600px" max-width="1200px"></img>
+</center>
+</section>
+</div>
+<br/><br/>
+
+
+
+
+
+<br/><br/>
+<center>
+<div class="jumbotron">
+<div class="fb-like" data-href="http://127.0.0.1:8000/Projects/{{post.id}}" data-width="" data-layout="button_count" data-action="like" data-size="large" data-share="true"></div>
+<br/>
+<div class="fb-comments" data-href="http://127.0.0.1:8000/Projects/{{post.id}}/{{post.title}}" data-width="" data-numposts="10"></div>
+</div></center>
+  <script src="{%static 'Jscripts/project.js' %}"></script>
+
+{% endblock content%}

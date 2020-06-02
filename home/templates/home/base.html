@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	{% load static %}
+    <!-- Basic -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">   
+   
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+     
+    <!--styles--> 
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'CSS/base.css' %}">
+    
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+     
+   
+      <!--scripts-->
+      
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+     $(document).ready(function(){
+     $('.toggle').click(function(){
+     $('header nav ul').toggleClass('active');
+    })
+   })
+</script>
+     
+   <!--title-->
+    {% if title %}
+    <title>Codesmaster | {{ title }}</title>
+    {% else %}
+    <title>Codesmaster | Projects </title>
+    {% endif %}
+</head>
+<body>
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v6.0"></script>
+<header>
+	<nav>
+		<div class="toggle"><i class="fa fa-bars" aria-hidden="true"></i></div>
+
+		<div class="logo">
+			<a href="{%url 'Home'%}"><img src="{% static 'Images/logo2.png' %}" height="100px"/></a>
+            <br/>
+		</div>
+
+		<ul class="">
+			<li><a href="{%url 'Codesmaster_Projects'%}">Projects</a></li>
+            <li><a href="{%url 'Team'%}">Team</a></li>
+            {%if user.is_authenticated %}
+            <li><a href="{%url 'Codesmaster_Profile'%}">Profile</a></li>
+            {%else%}
+            <li><!--a href="{%url 'Home'%}"--><a href="{%url 'Home'%}#Contact">Contacts</a></li>
+             {%endif%}
+            {%if user.is_authenticated %}
+			<li><a href="{%url 'Codesmaster_SignOut'%}">LogOut</a></li>
+            {%else%}
+            <li><a href="{%url 'Codesmaster_SignIn'%}">LogIn</a></li>
+            {%endif%}
+		</ul> 
+	</nav>
+</header>
+<br/>
+
+	<section class="overall">
+        {%if messages %}
+         {%for message in messages%}
+           <div class="alert alert-warning">
+               {{message}}
+           </div>
+          {%endfor%}
+        {%endif%}
+      {% block content %}
+      {% endblock %}
+    </section>  
+
+   
+  <footer class="site-footer">
+    <div class="bottom">
+      <div class="container">
+        <div class="row">
+
+          <div class="col-lg-6 col-xs-12 text-lg-left text-center">
+            <p class="copyright-text">
+              © Codesmaster
+            </p>
+            <div class="credits">
+              <!--
+                All the links in the footer should remain intact.
+                You can delete the links only if you purchased the pro version.
+                Licensing information: https://bootstrapmade.com/license/
+                Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=Bell
+              -->
+             Designed by <a href="">Souvik Das</a>
+            </div>
+          </div>
+
+          <div class="col-lg-6 col-xs-12 text-lg-right text-center">
+            <ul class="list-inline">
+              <li class="list-inline-item">
+                <a href="{%url 'Home'%}">Home</a>
+              </li>
+
+              <li class="list-inline-item">
+                <a href="{%url 'Home'%}#about">About Us</a>
+              </li>
+
+              <li class="list-inline-item">
+                <a href="https://github.com/Codesmaster-lab">Github</a>
+              </li>
+
+              <li class="list-inline-item">
+                <a href="https://www.instagram.com/Data.pirates/">Instagram</a>
+              </li>
+
+              <li class="list-inline-item">
+                <a href="{%url 'Home'%}#latest">Latest News</a>
+              </li>
+
+              <li class="list-inline-item">
+                <a href="{%url 'Home'%}#Contact">Contact</a>
+              </li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </footer>
+  <a class="scrolltop" href=""><span class="fa fa-angle-up"></span></a>
+
+
+
+  <!-- Required JavaScript Libraries -->
+   
+  <script src="{%static 'lib/jquery/jquery.min.js'%}"></script>
+  <script src="{%static 'lib/bootstrap/js/bootstrap.bundle.min.js'%}"></script>
+  <script src="{%static 'lib/jquery.easing/jquery.easing.min.js'%}"></script>
+  <script src="{%static 'lib/php-email-form/validate.js'%}"></script>
+  <script src="{%static 'lib/counterup/counterup.min.js'%}"></script>
+  <script src="{%static 'lib/tether/js/tether.min.js'%}"></script>
+  <script src="{%static 'lib/jquery-sticky/jquery.sticky.js'%}"></script>
+  <script src="{%static 'lib/venobox/venobox.min.js'%}"></script>
+  <script src="{%static 'lib/lockfixed/jquery.lockfixed.min.js'%}"></script>
+  <script src="{%static 'lib/waypoints/jquery.waypoints.min.js'%}"></script>
+  <script src="{%static 'lib/superfish/superfish.min.js'%}"></script>
+  <script src="{%static 'lib/hoverIntent/hoverIntent.js'%}"></script>
+   
+
+  <!--script src="{%static 'lib/jquery/jquery.min.js' %}"></script>
+  <script src="{%static 'lib/jquery/jquery-migrate.min.js' %}"></script>
+  <script src="{%static 'lib/superfish/hoverIntent.js' %}"></script>
+  <script src="{%static 'lib/superfish/superfish.min.js' %}"></script>
+  <script src="{%static 'lib/tether/js/tether.min.js' %}"></script>
+  <script src="{%static 'lib/stellar/stellar.min.js' %}"></script>
+  <script src="{%static 'lib/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{%static 'lib/counterup/counterup.min.js' %}"></script>
+  <script src="{%static 'lib/waypoints/waypoints.min.js' %}"></script>
+  <script src="{%static 'lib/easing/easing.js' %}"></script>
+  <script src="{%static 'lib/stickyjs/sticky.js' %}"></script>
+  <script src="{%static 'lib/parallax/parallax.js' %}"></script>
+  <script src="{%static 'lib/lockfixed/lockfixed.min.js' %}"></script-->
+  <script src="{%static 'Jscripts/base.js' %}"></script>
+</body>
+</html>

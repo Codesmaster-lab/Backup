@@ -1,0 +1,12 @@
+ {% extends "home/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+ {%load static%}
+    <link rel="stylesheet" type="text/css" href="{% static 'CSS/logout.css' %}">
+ <br/><br/><br/><br/><br/>
+<div class="logout">
+    <div class="border-top pt-3">
+            <strong class="text-muted" style="color:white;">You have been logged out!  <a class="ml-2" href="{%url 'Codesmaster_SignIn'%}">SignIn</a> </strong>
+    </div>
+</div>
+{% endblock content%}
